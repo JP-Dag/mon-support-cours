@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapitre 1: Problèmes du Premier Degré</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .math-inline {
+            font-family: 'Times New Roman', serif;
+            padding: 0 2px;
+            background-color: #f0f4f8; 
+            border-radius: 3px;
+        }
+        .ia-box {
+            border-left-width: 4px;
+            border-color: #3b82f6; 
+            background-color: #eff6ff; 
+            padding: 16px;
+            margin-top: 16px; 
+            margin-bottom: 16px; 
+            border-radius: 8px;
+        }
+        .ia-box-title {
+            font-weight: 600;
+            color: #1e3a8a; 
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .ia-box-title svg {
+            margin-right: 8px;
+            flex-shrink: 0; 
+        }
+        .exercice-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 24px; 
+            margin-bottom: 24px; 
+            box-shadow: 0 6px 10px -1px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06); 
+        }
+        .difficulte-indicator {
+            font-size: 0.9em;
+            color: #fbbf24; 
+            margin-left: 8px;
+        }
+        .custom-list > li::before {
+            content: "➤";
+            margin-right: 0.75em; 
+            font-weight: bold;
+            color: #3b82f6; 
+        }
+        .placeholder-img-container { 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 12px 0;
+        }
+        .placeholder-img {
+            background-color: #e5e7eb; 
+            border: 1px dashed #9ca3af; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #6b7280; 
+            border-radius: 8px;
+            width: 100%; 
+            max-width: 300px; 
+            height: 180px; 
+            object-fit: cover; 
+        }
+        .input-answer {
+            width: 100%;
+            padding: 8px;
+            margin-top: 8px;
+            border: 1px solid #d1d5db; 
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .trace-ecrite-box {
+            border: 2px dashed #10b981; 
+            background-color: #f0fdfa; 
+            padding: 16px;
+            margin-top: 16px;
+            border-radius: 8px;
+        }
+        .trace-ecrite-title {
+            font-weight: 600;
+            color: #047857; 
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .export-button {
+            background-color: #10b981; 
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 30px auto; 
+            width: fit-content;
+        }
+        .export-button:hover {
+            background-color: #059669; 
+        }
+    </style>
+</head>
+<body class="bg-slate-100 text-slate-800 leading-relaxed"> 
+    <div class="container mx-auto p-4 md:p-8 max-w-4xl">
+
+        <header class="mb-16 text-center"> 
+            <h1 class="text-5xl font-bold text-blue-700 mb-3">Chapitre 1: Problèmes du Premier Degré</h1> 
+            <p class="text-2xl text-slate-600">Apprends avec ton Assistant IA</p> 
+        </header>
+
+        <section class="mb-12 p-8 bg-blue-100 rounded-xl shadow-lg"> 
+            <h2 class="text-3xl font-semibold text-blue-700 mb-5">Introduction pour toi : Ce chapitre et ton Assistant IA</h2> 
+            <p class="mb-4 text-lg">Bienvenue dans ce premier chapitre ! Tout au long de ce module, tu vas apprendre à traduire des situations concrètes en langage mathématique (équations et inéquations) et à les résoudre.</p>
+            <p class="mb-4 text-lg">Dans le cadre du projet de la classe, tu seras accompagné par un <strong class="text-blue-600">assistant Intelligence Artificielle (IA)</strong>. Cet assistant est là pour t'aider à :</p>
+            <ul class="list-disc list-inside mb-5 pl-5 space-y-2 text-lg"> 
+                <li>Comprendre les notions à ton rythme.</li>
+                <li>Obtenir des explications personnalisées.</li>
+                <li>Valider ta démarche et identifier tes points forts ou tes difficultés.</li>
+                <li>Explorer des pistes différentes et approfondir les sujets.</li>
+            </ul>
+            <h3 class="text-2xl font-semibold text-blue-700 mb-3">Comment utiliser ce support et l'IA ?</h3> 
+            <ul class="list-disc list-inside pl-5 space-y-2 text-lg"> 
+                <li><strong>Les Pôles d'Activités :</strong> Ce support peut être utilisé dans les différents pôles de la classe :
+                    <ul class="list-circle list-inside pl-7 mt-2 space-y-1"> 
+                        <li><em>Pôle Interaction IA & Numérisation :</em> Lorsque tu vois des indications spécifiques <span class="inline-flex items-center bg-blue-200 text-blue-800 px-3 py-1 rounded-lg text-base font-medium"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>Interaction IA</span> ou si tu souhaites soumettre ton travail (même manuscrit après numérisation et OCR avec OneNote).</li>
+                        <li><em>Pôle Activités d'Application & Collaboration :</em> Pour travailler sur les exercices, seul ou en groupe.</li>
+                        <li><em>Pôle Regroupement & Synthèse :</em> Pour les mises en commun avec l'enseignant.</li>
+                    </ul>
+                </li>
+                <li class="mt-3"><strong>Conseils pour interagir avec l'IA :</strong> Sois précis dans tes questions. Explique ce que tu as déjà tenté. N'hésite pas à demander à l'IA de reformuler si tu ne comprends pas.</li>
+            </ul>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-4xl font-semibold text-blue-600 border-b-4 border-blue-200 pb-3 mb-8">A- Pour Débuter</h2> 
+            <div class="exercice-card">
+                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Capacités Visées</h3> 
+                <ul class="custom-list list-inside space-y-2 text-slate-700 text-lg"> 
+                    <li>Traduire un problème par une équation ou une inéquation du premier degré à une inconnue.</li>
+                    <li>Résoudre algébriquement :
+                        <ul class="list-disc list-inside pl-7 mt-1.5 space-y-1"> 
+                            <li>une équation du premier degré à une inconnue ;</li>
+                            <li>une inéquation du premier degré à une inconnue.</li>
+                        </ul>
+                    </li>
+                    <li class="mt-1.5">Choisir et mettre en œuvre une méthode de résolution adaptée au problème.</li>
+                </ul>
+            </div>
+
+            <div class="exercice-card">
+                <h3 class="text-2xl font-semibold text-slate-700 mb-5">Prérequis</h3> 
+                <ol class="list-decimal list-inside space-y-5 text-lg"> 
+                    <li>
+                        <span id="prerequis_q1_enonce"><strong>Identifier les équations :</strong> Entoure les expressions ci-dessous qui sont des équations. <br> <span class="math-inline">2x+3</span> &nbsp;&nbsp;&nbsp; <span class="math-inline">-y+3=9</span> &nbsp;&nbsp;&nbsp; <span class="math-inline">2x-9=7</span> &nbsp;&nbsp;&nbsp; <span class="math-inline">69=3 \times 23</span> &nbsp;&nbsp;&nbsp; <span class="math-inline">7x-6 \le 2x+5</span></span>
+                        <textarea class="input-answer" id="prerequis_q1_reponse" data-question-id="prerequis_q1_enonce" placeholder="Tes réponses ici... (ex: -y+3=9, 2x-9=7)"></textarea>
+                    </li>
+                    <li>
+                        <span id="prerequis_q2_enonce"><strong>Expressions équivalentes :</strong> Relie chaque équation de gauche à son expression équivalente de droite.
+                        <div class="grid grid-cols-2 gap-x-4 mt-2">
+                            <div><span class="math-inline">4x = -3</span></div><div><span class="math-inline">x = 5 - 6</span></div>
+                            <div><span class="math-inline">x - 6 = 5</span></div><div><span class="math-inline">x = -3/4</span></div>
+                            <div></div><div><span class="math-inline">x = 6 - 5</span></div>
+                            <div></div><div><span class="math-inline">x = 5 + 6</span></div>
+                        </div>
+                        <p class="text-base text-slate-500 mt-1">(Note: La mise en page des correspondances est simplifiée ici.)</p></span>
+                        <textarea class="input-answer" id="prerequis_q2_reponse" data-question-id="prerequis_q2_enonce" placeholder="Tes réponses ici... (ex: 4x=-3 avec x=-3/4)"></textarea>
+                    </li>
+                    <li>
+                        <span id="prerequis_q3_enonce"><strong>Comparer des nombres :</strong> Complète avec le symbole qui convient: <span class="math-inline">&lt;</span> ou <span class="math-inline">&gt;</span>. <br> <span class="math-inline">7 ... 12</span> &nbsp;&nbsp;&nbsp; <span class="math-inline">12,01 ... 12,1</span> &nbsp;&nbsp;&nbsp; <span class="math-inline">30,7 ... -30,9</span> &nbsp;&nbsp;&nbsp; <span class="math-inline">-4,2 ... -5</span></span>
+                        <textarea class="input-answer" id="prerequis_q3_reponse" data-question-id="prerequis_q3_enonce" placeholder="Tes réponses ici... (ex: 7 < 12)"></textarea>
+                    </li>
+                    <li>
+                        <span id="prerequis_q4_enonce"><strong>Tester une solution :</strong> Le nombre 4 est-il solution de l'équation <span class="math-inline">3x + 2 = 7x</span> ? Justifie ta réponse.</span>
+                        <textarea class="input-answer" id="prerequis_q4_reponse" data-question-id="prerequis_q4_enonce" rows="2" placeholder="Ta justification ici..."></textarea>
+                    </li>
+                    <li id="prerequis_q5_enonce_li" data-question-enonce="Traduire une phrase : On note x le prix, en euro, d'un kg de pommes. Coche l'équation qui traduit « le prix de 3,5 kg de pommes est de 6,30 € ».">
+                        <strong>Traduire une phrase :</strong> On note <span class="math-inline">x</span> le prix, en euro, d'un kg de pommes. Coche l'équation qui traduit « le prix de 3,5 kg de pommes est de 6,30 € ». <br>
+                        <label class="block mt-1"><input type="radio" name="pommes_eq" value="x+3.5=6.30" class="mr-2"><span class="math-inline">x + 3,5 = 6,30</span></label>
+                        <label class="block"><input type="radio" name="pommes_eq" value="3.5x=6.30" class="mr-2"><span class="math-inline">3,5x = 6,30</span></label>
+                        <label class="block"><input type="radio" name="pommes_eq" value="x=3.5*6.30" class="mr-2"><span class="math-inline">x = 3,5 \times 6,30</span></label>
+                        <label class="block"><input type="radio" name="pommes_eq" value="6.30x=3.5" class="mr-2"><span class="math-inline">6,30x = 3,5</span></label>
+                    </li>
+                </ol>
+
+                <div class="ia-box">
+                    <p class="ia-box-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                        Vérifie tes bases !
+                    </p>
+                    <p class="text-base">Avant de plonger dans le chapitre, teste tes connaissances avec ces prérequis.</p>
+                    <ul class="list-disc list-inside pl-4 mt-2 space-y-1 text-base">
+                        <li><strong>Difficultés ?</strong> Si tu rencontres des problèmes, direction le <strong>Pôle Interaction IA & Numérisation</strong> !</li>
+                        <li>Soumets tes réponses à ton assistant IA pour un feedback.</li>
+                        <li>Demande-lui des explications claires sur les points qui te bloquent.</li>
+                        <li>L'IA peut te proposer des exercices d'entraînement supplémentaires si besoin.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-4xl font-semibold text-blue-600 border-b-4 border-blue-200 pb-3 mb-8">B- Activités</h2>
+            <div class="bg-sky-100 p-6 rounded-xl mb-8 shadow"> 
+                <h3 class="text-2xl font-semibold text-sky-700 mb-3">Introduction aux Activités : À toi de jouer (avec l'IA) !</h3>
+                <p class="mb-3 text-lg">Ces activités sont conçues pour te faire explorer et comprendre les mécanismes de résolution des problèmes du premier degré. L'assistant IA est ton partenaire.</p>
+                <p class="text-lg"><strong>Travail manuscrit ?</strong> Si tu préfères travailler sur papier, n'oublie pas que tu peux numériser ton travail pour ensuite copier-coller le texte dans le chat de l'IA.</p>
+            </div>
+
+            <div class="exercice-card">
+                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Activité 1: Le compte est bon</h3>
+                <ol class="list-decimal list-inside space-y-4 text-lg">
+                    <li><span id="activite1_q1_enonce">Trouver trois nombres entiers consécutifs (qui se suivent) dont la somme vaut 114.</span>
+                        <textarea class="input-answer" id="activite1_q1_reponse" data-question-id="activite1_q1_enonce" rows="2" placeholder="Ta démarche et ta solution ici..."></textarea>
+                    </li>
+                    <li><span id="activite1_q2_enonce">On choisit un nombre. On le multiplie par 8, puis on ajoute 11 au résultat. On obtient un résultat final de 67. Quel est ce nombre ?</span>
+                        <textarea class="input-answer" id="activite1_q2_reponse" data-question-id="activite1_q2_enonce" rows="2" placeholder="Ta démarche et ta solution ici..."></textarea>
+                    </li>
+                </ol>
+                <div class="ia-box">
+                     <p class="ia-box-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                        Pistes d'Interaction
+                    </p>
+                    <ul class="list-disc list-inside pl-4 space-y-1 text-base">
+                        <li><strong>Question 1 :</strong> "Comment définir mathématiquement 'trois nombres entiers qui se suivent' en utilisant une seule inconnue <span class="math-inline">x</span> ? Si tu as une idée de mise en équation, propose-la à l'IA."</li>
+                        <li><strong>Question 2 :</strong> "Ce problème se résout en 'remontant' les opérations. Si tu es bloqué(e), demande à l'IA de t'aider à décortiquer les étapes."</li>
+                        <li><strong>Auto-évaluation :</strong> Explique ta démarche à l'IA. Demande-lui d'évaluer tes compétences 'S'approprier' et 'Réaliser'.</li>
+                    </ul>
+                </div>
+                 <div class="trace-ecrite-box">
+                    <p class="trace-ecrite-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                        Point Clé à Noter avec l'IA
+                    </p>
+                    <p class="text-base">Après cette activité, demande à ton assistant IA de t'aider à résumer en une ou deux phrases ce que tu as appris d'important sur la mise en équation. Note-le :</p>
+                    <textarea class="input-answer mt-2" id="activite1_trace_ecrite" data-question-enonce="Point clé à noter sur la mise en équation après l'activité 1." rows="3" placeholder="Ta trace écrite ici..."></textarea>
+                </div>
+            </div>
+
+            <div class="exercice-card">
+                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Activité 2: Tarifs au salon de thé & Distances des amis</h3>
+                <p class="mb-4 text-lg"><strong id="activite2_q1_enonce">Problème 1 (Salon de thé) :</strong> Dans un salon de thé, un thé coûte 1,20 € de plus qu'un café et un chocolat chaud coûte 0,40 € de plus qu'un thé. Six amis commandent 3 cafés, 2 thés et 1 chocolat chaud. Ils ajoutent un pourboire de 1,40 €. Ils payent au total 15 €. Quel est le prix de chacune des boissons ?</p>
+                <textarea class="input-answer mb-4" id="activite2_q1_reponse" data-question-id="activite2_q1_enonce" rows="3" placeholder="Ta démarche et ta solution pour le salon de thé..."></textarea>
+                <p class="text-lg"><strong id="activite2_q2_enonce">Problème 2 (Marche au lycée) :</strong> Trois amis qui viennent d'un même quartier se donnent rendez-vous chaque matin, à un carrefour, pour se rendre ensemble au lycée à pied. Un jour, ils décident de comparer les résultats de leur podomètre, via une application sur leur smartphone. La distance parcourue par Nicolas est égale à la moitié de celle de Mostapha. Ludovic marche 200 m de plus que Nicolas avant de les rejoindre. Mostapha affirme que pour arriver à leur lieu de rencontre, ils ont marché à eux trois 948 m au total. Quelle est la distance parcourue par chacun des trois amis ?</p> 
+                <textarea class="input-answer" id="activite2_q2_reponse" data-question-id="activite2_q2_enonce" rows="3" placeholder="Ta démarche et ta solution pour les distances..."></textarea>
+                <div class="ia-box">
+                     <p class="ia-box-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                        Pistes d'Interaction
+                    </p>
+                    <ul class="list-disc list-inside pl-4 space-y-1 text-base">
+                        <li>"Ces problèmes impliquent plusieurs informations. Choisis une inconnue principale et exprime les autres quantités en fonction. Discute avec l'IA du meilleur choix."</li>
+                        <li><strong>Contextualisation et Métiers :</strong> "Demande à l'IA un exemple de problème similaire dans un secteur qui t'intéresse."</li>
+                        <li><strong>Pour aller plus loin :</strong> "Avec l'IA, explore des variantes."</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exercice-card">
+                <h3 class="text-2xl font-semibold text-slate-700 mb-4">Activité 3: Cinéma Paradisio</h3>
+                <p class="text-lg" id="activite3_q1_enonce">Au cinéma Paradisio une séance coûte 7,40 €. Il est possible d'acheter une carte d'abonnement annuelle de 50 € qui permet de payer chaque séance demi-tarif (soit 3,70 €). À partir de combien de séances l'achat de la carte est-il avantageux ?</p>
+                <textarea class="input-answer" id="activite3_q1_reponse" data-question-id="activite3_q1_enonce" rows="3" placeholder="Ta démarche et ta solution ici..."></textarea>
+                 <div class="ia-box">
+                     <p class="ia-box-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                        Pistes d'Interaction
+                    </p>
+                    <ul class="list-disc list-inside pl-4 space-y-1 text-base">
+                        <li>"Ici, tu vas comparer deux options. Cela se traduit par une <strong>inéquation</strong>."</li>
+                        <li>"Si besoin, demande un indice à l'IA pour poser l'inéquation."</li>
+                        <li><strong>Réflexion Critique :</strong> "Interprète ta solution. Le résultat te semble-t-il réaliste ? Discute-en avec l'IA."</li>
+                    </ul>
+                </div>
+                 <div class="trace-ecrite-box">
+                    <p class="trace-ecrite-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                        Point Clé à Noter avec l'IA
+                    </p>
+                    <p class="text-base">Qu'as-tu appris sur la résolution des inéquations ? Demande à l'IA de t'aider à le formuler et note-le :</p>
+                    <textarea class="input-answer mt-2" id="activite3_trace_ecrite" data-question-enonce="Point clé à noter sur la résolution des inéquations après l'activité 3." rows="3" placeholder="Ta trace écrite ici..."></textarea>
+                </div>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-4xl font-semibold text-blue-600 border-b-4 border-blue-200 pb-3 mb-8">C- Exercices et Problèmes</h2>
+            <div class="bg-sky-100 p-6 rounded-xl mb-8 shadow">
+                <h3 class="text-2xl font-semibold text-sky-700 mb-3">Introduction aux Exercices : Entraîne-toi et progresse !</h3>
+                <p class="mb-3 text-lg">Voici une série d'exercices pour consolider tes acquis et te mettre au défi.</p>
+                <ul class="list-disc list-inside pl-5 space-y-2 text-lg">
+                    <li><strong>Niveaux de difficulté :</strong> Utilise les indicateurs (<span class="text-yellow-500">★</span> Facile, <span class="text-yellow-500">★★</span> Moyen, <span class="text-yellow-500">★★★</span> Avancé).</li>
+                    <li><strong>Utilisation des Pôles :</strong> Le <strong>Pôle Interaction IA & Numérisation</strong> est à ta disposition.</li>
+                </ul>
+            </div>
+
+            <div class="exercice-card">
+                <h4 class="text-xl font-semibold text-slate-700 mb-3">Exercice 1 <span class="difficulte-indicator">★</span></h4>
+                <p class="text-lg" id="exercice1_enonce">Utiliser les quatre étapes de résolution d'un problème du 1er degré (Choix de l'inconnue, Mise en équation, Résolution, Vérification/Conclusion) pour trouver la solution de chacun des exemples de l'Activité 1 << Le compte est bon >>.</p>
+                <textarea class="input-answer" id="exercice1_reponse" data-question-id="exercice1_enonce" rows="4" placeholder="Ta démarche pour chaque exemple de l'Activité 1..."></textarea>
+                <div class="ia-box">
+                    <p class="ia-box-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                        Piste d'Interaction
+                    </p>
+                    <p class="text-base">"Applique la méthode en 4 étapes. Si tu bloques, soumets ton travail à l'IA."</p>
+                </div>
+            </div>
+            
+            <div class="exercice-card">
+                <h4 class="text-xl font-semibold text-slate-700 mb-3">Exercice 2 <span class="difficulte-indicator">★</span></h4>
+                <p class="text-lg" id="exercice2_enonce">Dans une entreprise, il y a 90 employés. Il y a quatre fois plus de femmes que d'hommes. Combien y a-t-il d'hommes et de femmes dans l'entreprise ?</p>
+                <div class="placeholder-img-container">
+                    <img src="https://placehold.co/300x180/e2e8f0/64748b?text=Employ%C3%A9s+en+entreprise" alt="[Image d'employés en entreprise]" class="placeholder-img">
+                </div>
+                <textarea class="input-answer" id="exercice2_reponse" data-question-id="exercice2_enonce" rows="3" placeholder="Ta démarche et ta solution ici..."></textarea>
+            </div>
+
+            <div class="exercice-card">
+                <h4 class="text-xl font-semibold text-slate-700 mb-3">Exercice 3 <span class="difficulte-indicator">★★</span></h4>
+                <p class="text-lg" id="exercice3_enonce">Le personnel soignant d'un service hospitalier est composé de 84 personnes : médecins, infirmières, aides-soignantes. Il y a quatre fois moins de médecins que d'infirmières et neuf fois plus d'aides-soignantes que de médecins. Quel est le nombre de personnes de chaque catégorie ?</p>
+                <div class="placeholder-img-container">
+                    <img src="https://placehold.co/300x180/dbeafe/1e40af?text=Personnel+Soignant" alt="[Image de personnel soignant]" class="placeholder-img">
+                </div>
+                <textarea class="input-answer" id="exercice3_reponse" data-question-id="exercice3_enonce" rows="3" placeholder="Ta démarche et ta solution ici..."></textarea>
+                <div class="ia-box">
+                     <p class="ia-box-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                        Piste d'Interaction
+                    </p>
+                    <p class="text-base">"Choisis bien ton inconnue. Exprime les autres catégories en fonction de celle-ci. L'IA peut t'aider à vérifier tes expressions."</p>
+                </div>
+            </div>
+
+            <div class="exercice-card">
+                <h4 class="text-xl font-semibold text-slate-700 mb-3">Exercice 4 <span class="difficulte-indicator">★★</span></h4>
+                <p class="text-lg" id="exercice4_enonce">Adrien, Romuald, Samir et Morgan se cotisent pour offrir un cadeau d'anniversaire à une amie. Chacun donne selon ses moyens. Adrien apporte sa part, Romuald donne 3 € de plus qu'Adrien. Samir donne le double de la part d'Adrien. Morgan vide son porte-monnaie et donne 1,50 € de moins qu'Adrien. A eux quatre, ils ont collecté 36,50 €. Déterminer la somme versée par chacun.</p>
+                 <div class="placeholder-img-container">
+                    <img src="https://placehold.co/300x180/fef9c3/b45309?text=Cadeau+d%27anniversaire" alt="[Image d'un cadeau d'anniversaire]" class="placeholder-img">
+                </div>
+                <textarea class="input-answer" id="exercice4_reponse" data-question-id="exercice4_enonce" rows="3" placeholder="Ta démarche et ta solution ici..."></textarea>
+            </div>
+
+            <div class="exercice-card">
+                <h4 class="text-xl font-semibold text-slate-700 mb-3">Exercice 5 <span class="difficulte-indicator">★★</span></h4>
+                <p class="text-lg" id="exercice5_enonce">Romain a acheté une calculatrice, un livre et un stylo-plume. Le livre a coûté deux fois plus cher que la calculatrice. Le stylo-plume a coûté 5 € de moins que la calculatrice. Romain a payé en tout 55 €. Calculer le prix de chaque article.</p>
+                <div class="placeholder-img-container">
+                    <img src="https://placehold.co/300x180/f3e8ff/6b21a8?text=Calculatrice,+Livre,+Stylo" alt="[Image de calculatrice, livre et stylo]" class="placeholder-img">
+                </div>
+                <textarea class="input-answer" id="exercice5_reponse" data-question-id="exercice5_enonce" rows="3" placeholder="Ta démarche et ta solution ici..."></textarea>
+            </div>
+
+            <div class="exercice-card">
+                <h4 class="text-xl font-semibold text-slate-700 mb-3">Exercice 6 <span class="difficulte-indicator">★★</span></h4>
+                <p class="text-lg" id="exercice6_enonce">Une raquette et une balle de tennis de table sont vendues 12 €. La raquette coûte 10 € de plus que la balle. Quel est le prix de la balle et celui de la raquette?</p>
+                <div class="placeholder-img-container">
+                    <img src="https://placehold.co/300x180/ccfbf1/0f766e?text=Raquette+et+Balle" alt="[Image d'une raquette et balle de tennis de table]" class="placeholder-img">
+                </div>
+                <textarea class="input-answer" id="exercice6_reponse" data-question-id="exercice6_enonce" rows="3" placeholder="Ta démarche et ta solution ici..."></textarea>
+            </div>
+            
+            <div class="exercice-card">
+                <h4 class="text-xl font-semibold text-slate-700 mb-3">Exercice 7 <span class="difficulte-indicator">★★</span></h4>
+                <div id="exercice7_enonce_wrapper" data-question-enonce="Une société de location de machines propose les deux tarifs suivants : Tarif 1: 23 € par heure de location. Tarif 2: une somme fixe de 36 €, plus 17 € par heure de location. Pour quels nombres d'heures le tarif 2 est-il plus intéressant que le tarif 1 ?">
+                    <p class="text-lg">Une société de location de machines propose les deux tarifs suivants :</p>
+                    <ul class="list-disc list-inside pl-5 my-2 text-lg">
+                        <li>Tarif 1: 23 € par heure de location</li>
+                        <li>Tarif 2: une somme fixe de 36 €, plus 17 € par heure de location.</li>
+                    </ul>
+                    <p class="text-lg">Pour quels nombres d'heures le tarif 2 est-il plus intéressant que le tarif 1 ?</p>
+                </div>
+                <div class="placeholder-img-container">
+                     <img src="https://placehold.co/300x180/e0f2fe/0891b2?text=Location+Machine" alt="[Image de machine à louer]" class="placeholder-img">
+                </div>
+                <textarea class="input-answer" id="exercice7_reponse" data-question-id="exercice7_enonce_wrapper" rows="3" placeholder="Ta démarche et ta solution ici..."></textarea>
+                 <div class="ia-box">
+                    <p class="ia-box-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                        Lien Métier & Interaction
+                    </p>
+                    <p class="text-base">"Savoir comparer des offres est une compétence clé. Demande à l'IA des exemples de métiers où cela est utile."</p>
+                </div>
+            </div>
+
+
+            <div class="exercice-card">
+                <h4 class="text-xl font-semibold text-slate-700 mb-3">Exercice 19 <span class="difficulte-indicator">★★★</span></h4>
+                <ol class="list-decimal list-inside space-y-3 text-lg">
+                    <li><span id="exercice19_q1_enonce">Résous l'équation suivante: <span class="math-inline">2x + 3 = 48 - 4x</span>.</span>
+                        <textarea class="input-answer" id="exercice19_q1_reponse" data-question-id="exercice19_q1_enonce" rows="2" placeholder="Ta résolution ici..."></textarea>
+                    </li>
+                    <li id="exercice19_q2_enonce_wrapper" data-question-enonce="Parmi les trois programmes Python ci-dessous, lequel permet de vérifier la solution de l'équation précédente ? Justifie. [Programme 1: if 2*x + 3 > 48 - 4*x] [Programme 2: if 2*x + 3 == 48 - 4*x] [Programme 3: if 2*x + 31 == 48 - 4*x]">Parmi les trois programmes Python ci-dessous, lequel permet de vérifier la solution de l'équation précédente ? Justifie.
+                        <div class="bg-slate-900 text-slate-200 p-4 rounded-lg my-3 text-base overflow-x-auto">
+                            <p><strong>Programme 1:</strong><br>
+                            <code class="block whitespace-pre">x = float(input("Proposer une solution..."))</code>
+                            <code class="block whitespace-pre">if 2*x + 3 > 48 - 4*x:</code>
+                            <code class="block whitespace-pre">  print("Bravo...")</code>
+                            <code class="block whitespace-pre">else:</code>
+                            <code class="block whitespace-pre">  print("Ce n'est pas la bonne solution...")</code>
+                            </p>
+                            <p class="mt-3"><strong>Programme 2:</strong><br>
+                            <code class="block whitespace-pre">x = float(input("Proposer une solution..."))</code>
+                            <code class="block whitespace-pre">if 2*x + 3 == 48 - 4*x:</code>
+                            <code class="block whitespace-pre">  print("Bravo...")</code>
+                            <code class="block whitespace-pre">else:</code>
+                            <code class="block whitespace-pre">  print("Ce n'est pas la bonne solution...")</code>
+                            </p>
+                             <p class="mt-3"><strong>Programme 3:</strong><br>
+                            <code class="block whitespace-pre">x = float(input("Proposer une solution..."))</code>
+                            <code class="block whitespace-pre">if 2*x + 31 == 48 - 4*x: </code>
+                            <code class="block whitespace-pre">  print("Bravo...")</code>
+                            <code class="block whitespace-pre">else:</code>
+                            <code class="block whitespace-pre">  print("Ce n'est pas la bonne solution...")</code>
+                            </p>
+                        </div>
+                        <textarea class="input-answer" id="exercice19_q2_reponse" data-question-id="exercice19_q2_enonce_wrapper" rows="2" placeholder="Ton choix et ta justification..."></textarea>
+                    </li>
+                    <li><span id="exercice19_q3_enonce">Que font les autres programmes ?</span>
+                        <textarea class="input-answer" id="exercice19_q3_reponse" data-question-id="exercice19_q3_enonce" rows="2" placeholder="Ton explication..."></textarea>
+                    </li>
+                </ol>
+                 <div class="ia-box">
+                    <p class="ia-box-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                        Compétences Numériques
+                    </p>
+                    <ul class="list-disc list-inside pl-4 space-y-1 text-base">
+                        <li><strong>Q2 :</strong> "Explique à l'IA pourquoi tu penses que le Programme 2 est correct."</li>
+                        <li><strong>Q3 :</strong> "Que font les programmes 1 et 3 ? L'IA peut t'aider à interpréter."</li>
+                        <li><strong>Défi Python :</strong> "Modifie le programme 2 pour une autre équation. L'IA peut t'aider à déboguer."</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="exercice-card">
+                <h4 class="text-xl font-semibold text-slate-700 mb-3">Exercice 20 <span class="difficulte-indicator">★★★</span></h4>
+                <ol class="list-decimal list-inside space-y-2 text-lg">
+                    <li><span id="exercice20_q1_enonce">Écris l'énoncé du problème que tu as inventé.</span>
+                        <textarea class="input-answer" id="exercice20_q1_reponse" data-question-id="exercice20_q1_enonce" rows="3" placeholder="Ton énoncé de problème ici..."></textarea>
+                    </li>
+                    <li><span id="exercice20_q2_enonce">Résous ce problème.</span>
+                        <textarea class="input-answer" id="exercice20_q2_reponse" data-question-id="exercice20_q2_enonce" rows="4" placeholder="Ta résolution ici..."></textarea>
+                    </li>
+                </ol>
+                 <div class="ia-box">
+                    <p class="ia-box-title">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z" /><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z" /></svg>
+                        Créativité et Validation
+                    </p>
+                    <ul class="list-disc list-inside pl-4 space-y-1 text-base">
+                        <li>"Sois créatif ! Inspire-toi de la vie courante."</li>
+                        <li>"Soumets ton énoncé à l'IA : 'Mon énoncé est-il clair ? Complet ?'"</li>
+                        <li>"Propose ta démarche et solution à l'IA pour évaluation."</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <div class="my-10 text-center">
+             <button id="exportButton" class="export-button">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline-block mr-2 -mt-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                Exporter mes Réponses
+            </button>
+        </div>
+
+
+        <section class="mb-12">
+            <h2 class="text-4xl font-semibold text-blue-600 border-b-4 border-blue-200 pb-3 mb-8">D- Bilan du Chapitre et Auto-Positionnement</h2>
+            <div class="exercice-card bg-green-100 border-green-600 border-l-8"> 
+                <h3 class="text-2xl font-semibold text-green-700 mb-4">Félicitations, tu as exploré les problèmes du premier degré !</h3>
+                <p class="mb-4 text-lg">Il est temps de faire le point sur tes apprentissages :</p>
+                <ol class="list-decimal list-inside space-y-4 text-lg">
+                    <li><span id="bilan_capacites_enonce"><strong>Revois les "Capacités Visées"</strong> au début du chapitre. Pour chacune, comment évalues-tu ton niveau ? (Ex : "Je suis à l'aise", "J'ai encore besoin de m'entraîner", "J'ai besoin d'aide"). Échange-en avec l'IA ou ton enseignant.</span>
+                        <textarea class="input-answer" id="bilan_capacites_reponse" data-question-id="bilan_capacites_enonce" rows="3" placeholder="Ton auto-évaluation des capacités visées..."></textarea>
+                    </li>
+                    <li><span id="bilan_pointsfortsfaibles_enonce"><strong>Quels types de problèmes</strong> maîtrises-tu le mieux ? Lesquels te posent encore des difficultés ?</span>
+                        <textarea class="input-answer" id="bilan_pointsfortsfaibles_reponse" data-question-id="bilan_pointsfortsfaibles_enonce" rows="3" placeholder="Tes points forts et points à améliorer..."></textarea>
+                    </li>
+                    <li><strong>Ton Plan d'Action Personnalisé avec l'IA :</strong>
+                        <ul class="list-disc list-inside pl-7 mt-2 space-y-1.5">
+                            <li>Partage ton auto-évaluation avec ton assistant IA.</li>
+                            <li>Demande-lui des exercices de <strong>remédiation</strong> spécifiques sur tes points faibles.</li>
+                            <li>Demande-lui des problèmes d'<strong>approfondissement</strong> sur tes points forts.</li>
+                        </ul>
+                    </li>
+                    <li class="mt-3"><strong>N'oublie pas :</strong> Les équations et inéquations du premier degré sont des outils fondamentaux. Ton assistant IA reste disponible si tu as besoin de revoir une notion de ce chapitre plus tard.</li>
+                </ol>
+            </div>
+        </section>
+
+        <footer class="text-center text-base text-slate-500 mt-16 py-8 border-t-2 border-slate-300"> 
+            <p>Support de cours - Mathématiques Lycée Professionnel - Chapitre 1</p>
+            <p>&copy; 2025 - Ton établissement</p>
+        </footer>
+
+    </div>
+
+    <script>
+        // Fonction pour collecter les réponses et générer un fichier JSON
+        function exporterReponses() {
+            const reponses = {};
+            // Sélectionner tous les textarea avec la classe 'input-answer' et un id
+            const textareas = document.querySelectorAll('textarea.input-answer[id]');
+            
+            textareas.forEach(textarea => {
+                if (textarea.value.trim() !== "") { // Exporter seulement si le champ n'est pas vide
+                    let questionText = "Question non spécifiée"; // Valeur par défaut
+                    
+                    // Essayer de récupérer le texte de la question via l'attribut data-question-id
+                    // qui pointe vers l'ID d'un élément contenant l'énoncé.
+                    const questionElementId = textarea.getAttribute('data-question-id');
+                    if (questionElementId) {
+                        const questionElement = document.getElementById(questionElementId);
+                        if (questionElement) {
+                             // Si l'élément pointé a lui-même un data-question-enonce (pour les wrappers)
+                            if (questionElement.hasAttribute('data-question-enonce')) {
+                                questionText = questionElement.getAttribute('data-question-enonce');
+                            } else { // Sinon, prendre son innerText
+                                questionText = questionElement.innerText || questionElement.textContent;
+                            }
+                        }
+                    }
+                     // Si data-question-id n'est pas là, ou si l'élément n'est pas trouvé,
+                     // essayer de récupérer depuis data-question-enonce directement sur le textarea
+                     // (utile pour les traces écrites où la consigne est plus courte).
+                    if ((!questionElementId || !document.getElementById(questionElementId)) && textarea.hasAttribute('data-question-enonce')) {
+                         questionText = textarea.getAttribute('data-question-enonce');
+                    }
+
+                    reponses[textarea.id] = {
+                        question: questionText.trim().replace(/\s+/g, ' '), // Nettoyer le texte de la question
+                        reponse_eleve: textarea.value.trim()
+                    };
+                }
+            });
+
+            // Gérer les réponses des questions à choix multiples (radio)
+            // Spécifique pour la question des pommes (prerequis_q5)
+            const q5EnonceElement = document.getElementById('prerequis_q5_enonce_li'); // ID de l'élément li parent
+            if (q5EnonceElement) {
+                let q5QuestionText = "Question non trouvée";
+                if (q5EnonceElement.hasAttribute('data-question-enonce')) {
+                    q5QuestionText = q5EnonceElement.getAttribute('data-question-enonce');
+                }
+                
+                const q5CheckedRadio = document.querySelector('input[name="pommes_eq"]:checked');
+                if (q5CheckedRadio) { // Exporter seulement si une option est cochée
+                    reponses['prerequis_q5_choix'] = {
+                        question: q5QuestionText.trim().replace(/\s+/g, ' '),
+                        reponse_eleve: q5CheckedRadio.value
+                    };
+                }
+            }
+
+
+            if (Object.keys(reponses).length === 0) {
+                alert("Aucune réponse n'a été saisie pour l'exportation.");
+                return;
+            }
+
+            const jsonData = JSON.stringify(reponses, null, 2); // null, 2 pour un affichage formaté (indentation)
+            const blob = new Blob([jsonData], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'reponses_chapitre1.json';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+
+            alert("Le fichier 'reponses_chapitre1.json' avec les réponses traitées a été généré ! Tu peux maintenant le transmettre.");
+        }
+
+        // Attacher l'événement au bouton
+        const exportButton = document.getElementById('exportButton');
+        if (exportButton) {
+            exportButton.addEventListener('click', exporterReponses);
+        }
+    </script>
+
+</body>
+</html>
